@@ -1,0 +1,31 @@
+﻿@model ViewModel.Models.UserViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Register</title>
+
+</head>
+<body>
+    <div>
+        <div style="font-size:1.3rem;">
+            @using (Html.BeginForm(FormMethod.Post))
+            {
+                @Html.EditorForModel()
+                @Html.ValidationSummary("", new { style = "Color:red;" });
+
+                <input type="submit" name="Register" value="Register" />
+            }
+        </div>
+
+    </div>
+   <script src="~/Scripts/jquery-3.5.1.min.js"></script>
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+﻿@model IEnumerable<ViewModel.Models.User>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        <div style="display:inline-block; margin-right:80rem;">
+            @Html.ActionLink("Register", "Register", "", new { style = "color:blue; font-size:1.5rem; padding:2px;" })
+        </div>
+        <div style="display:inline-block;">
+            <button style="color:blue; font-size:1.5rem; padding:2px;" onclick="printDiv();">print Page</button>
+        </div>
+    </div>
+    <br />
+ 
+    <div id='printMe'>
+        <table border="1" style=" border-color:red; width:100%; text-align:center; font-size:2rem;">
+            <thead>
+                <tr>
+                    <th> @Html.DisplayNameFor(w => w.Name)      </th>
+                    <th> @Html.DisplayNameFor(w => w.Degree)      </th>
+                    <th> @Html.DisplayNameFor(w => w.Age)         </th>
+                    <th> @Html.DisplayNameFor(w => w.LName)       </th>
+                    <th> @Html.DisplayNameFor(w => w.Salary)      </th>
+                    <th> @Html.DisplayNameFor(w => w.Numbers)     </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td> @item.Name    </td>
+                        <td> @item.Degree  </td>
+                        <td> @item.Age     </td>
+                        <td> @item.LName   </td>
+                        <td> @item.Salary  </td>
+                        <td> @item.Numbers </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+
+
+    </div>
+
+    <script>
+        function printDiv() {
+            const printContents = document.getElementById("printMe").innerHTML;
+            const originalContents = document.body.innerHTML;
+            document.body.innerHTML = printContents;
+            window.print();
+            document.body.innerHTML = originalContents;
+        }
+    </script>
+
+</body>
+</html>
